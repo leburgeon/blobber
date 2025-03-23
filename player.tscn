@@ -32,7 +32,9 @@ radius = 43.0
 height = 100.0
 
 [node name="Player" type="Area2D"]
+position = Vector2(132, 138)
 script = ExtResource("1_hqtel")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(45, 45)
@@ -43,3 +45,5 @@ animation = &"Up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(51, 55)
 shape = SubResource("CapsuleShape2D_hqtel")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

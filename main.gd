@@ -23,7 +23,11 @@ func new_game():
 
 
 func _on_mob_timer_timeout() -> void:
-	pass # Replace with function body.
+	# Create a new instance of the Mob scene
+	var mob = mob_scene.instantiate()
+	
+	# Random location on Path2D
+	var mob_spawn_location = $MobPath/MobSpawnLocation
 
 
 func _on_score_timer_timeout() -> void:
@@ -33,3 +37,7 @@ func _on_score_timer_timeout() -> void:
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
 	$ScoreTimer.start()
+
+
+func _on_player_hit() -> void:
+	pass # Replace with function body.

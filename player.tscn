@@ -1,30 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp5kbnxisb357"]
+[gd_scene load_steps=10 format=3 uid="uid://dp5kbnxisb357"]
 
 [ext_resource type="Script" uid="uid://cdb3uhe4i1ls1" path="res://player.gd" id="1_hqtel"]
-[ext_resource type="Texture2D" uid="uid://c8r3f3hwq8rw6" path="res://art/playerBlue_up1.png" id="1_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://blqivvcpy8v1w" path="res://art/playerBlue_walk1.png" id="2_hqtel"]
-[ext_resource type="Texture2D" uid="uid://b42cms6ik67qn" path="res://art/playerBlue_walk2.png" id="3_sweqy"]
+[ext_resource type="Texture2D" uid="uid://vxwac2oaphck" path="res://art/good_guy_up1.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://cxpuy5716gj5u" path="res://art/good_guy_walk2.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://cv6j3has83amb" path="res://art/good_guy_up2.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://67g1801krtd6" path="res://art/good_guy_up3.png" id="5_b26j0"]
+[ext_resource type="Texture2D" uid="uid://cqerx7h8teqd2" path="res://art/good_guy_walk1.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://cakxaqqjwpk77" path="res://art/good_guy_walk3.png" id="6_dw050"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_i3pqv")
+"texture": ExtResource("3_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
 }],
 "loop": true,
 "name": &"Up",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hqtel")
+"texture": ExtResource("6_dw050")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_sweqy")
+"texture": ExtResource("4_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dw050")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
@@ -37,8 +55,8 @@ script = ExtResource("1_hqtel")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(45, 45)
-scale = Vector2(3.8125, 3.84375)
+position = Vector2(44, 45.75)
+scale = Vector2(3.75, 3.89063)
 sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"Up"
 

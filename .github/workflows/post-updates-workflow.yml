@@ -1,5 +1,9 @@
 name: update-notifier
 
+env:
+  REPO_URL: https://github.com/${{github.repository}}
+  ACTOR: ${{github.actor}}
+
 on: 
   push:
     branches:
@@ -9,21 +13,17 @@ jobs:
   notify-changes:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: notify discord
-      env:
-        REPO_URL: ${{github.repositoryUrl}}
-        ACTION: ${{github.action}}
-        ACTOR: ${{github.actor}}
-        HEAD_COMMIT_MESSAGE: ${{github.event.head_commit.message}}
-        COMMITS_COUNT: ${{github.event.payload.size}}
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Notify Discord
       uses: rjstone/discord-webhook-notify@v1
       with: 
         severity: info
         username: ${{env.ACTOR}}
         color: '#a31780'
         text: Repo Update!
-        description: Change to the main branch of the repo have been made!
-        details: '${{env.COMMITS_COUNT}} commits have been ${{env.ACTION}}ed to the main branch at ${{env.REPO_URL}}. Head commit message: ${{env.HEAD_COMMIT_MESSAGE}}'
+        description: Changes to the main branch of the repo have been made!
+        details: '${{fromJSON(toJSON(github.event.commits)).length}} commits have been pushed to the main branch at ${{env.REPO_URL}}. Head commit message: ${{github.event.head_commit.message}}'
         webhookUrl: ${{secrets.DISCORD_WEBHOOK}}
 
